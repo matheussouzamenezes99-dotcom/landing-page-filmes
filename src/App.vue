@@ -67,7 +67,7 @@ const generos = ref(['Todos', ...generosFilme.value])
 const generoAtivo = ref('Todos')
 const mostrarForm = ref(false)
 
-const equipe = ref(['Nome 1', 'Nome 2', 'Nome 3'])
+//const equipe = ref(['Nome 1', 'Nome 2', 'Nome 3'])
 
 function selecionarGenero(genero) {
   generoAtivo.value = genero
