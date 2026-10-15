@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import AppHeader from './components/AppHeader.vue'
+import AppFooter from './components/AppFooter.vue'
 import MovieCard from './components/MovieCard.vue'
 import GenreFilter from './components/GenreFilter.vue'
 import MovieForm from './components/MovieForm.vue'
@@ -65,6 +67,8 @@ const generos = ref(['Todos', ...generosFilme.value])
 const generoAtivo = ref('Todos')
 const mostrarForm = ref(false)
 
+const equipe = ref(['Nome 1', 'Nome 2', 'Nome 3'])
+
 function selecionarGenero(genero) {
   generoAtivo.value = genero
 }
@@ -84,7 +88,11 @@ function filmesFiltrados() {
 
 <template>
   <main>
-    <h1>CineVue</h1>
+    <AppHeader
+      titulo="CineVue"
+      subtitulo="Seu catálogo de filmes em uma única página"
+      :total="filmes.length"
+    />
 
     <button class="abrir" @click="mostrarForm = !mostrarForm">
       {{ mostrarForm ? 'Fechar formulário' : '+ Novo filme' }}
@@ -118,6 +126,8 @@ function filmesFiltrados() {
         :sinopse="filme.sinopse"
       />
     </section>
+
+    <AppFooter :equipe="equipe" />
   </main>
 </template>
 
@@ -126,10 +136,6 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 1rem;
-}
-
-h1 {
-  margin-bottom: 1.5rem;
 }
 
 .abrir {
