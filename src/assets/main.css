@@ -1,0 +1,21 @@
+:root {
+  --cor-fundo: #14161c;
+  --cor-superficie: #1f222b;
+  --cor-texto: #f2f2f2;
+  --cor-texto-suave: #a0a4b0;
+  --cor-destaque: #e50914;
+  --raio: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
