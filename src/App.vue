@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import MovieCard from './components/MovieCard.vue'
 import GenreFilter from './components/GenreFilter.vue'
+import MovieForm from './components/MovieForm.vue'
 
 const filmes = ref([
   {
@@ -51,11 +52,26 @@ const filmes = ref([
   }
 ])
 
-const generos = ref(['Todos', 'Ficção Científica', 'Drama', 'Comédia', 'Suspense', 'Animação'])
+const generosFilme = ref([
+  'Ficção Científica',
+  'Drama',
+  'Comédia',
+  'Suspense',
+  'Animação',
+  'Ação',
+  'Terror'
+])
+const generos = ref(['Todos', ...generosFilme.value])
 const generoAtivo = ref('Todos')
+const mostrarForm = ref(false)
 
 function selecionarGenero(genero) {
   generoAtivo.value = genero
+}
+
+function adicionarFilme(novoFilme) {
+  filmes.value.push({ id: Date.now(), ...novoFilme })
+  mostrarForm.value = false
 }
 
 function filmesFiltrados() {
@@ -69,6 +85,16 @@ function filmesFiltrados() {
 <template>
   <main>
     <h1>CineVue</h1>
+
+    <button class="abrir" @click="mostrarForm = !mostrarForm">
+      {{ mostrarForm ? 'Fechar formulário' : '+ Novo filme' }}
+    </button>
+
+    <MovieForm
+      v-if="mostrarForm"
+      :generos="generosFilme"
+      @adicionar="adicionarFilme"
+    />
 
     <GenreFilter
       :generos="generos"
@@ -104,6 +130,20 @@ main {
 
 h1 {
   margin-bottom: 1.5rem;
+}
+
+.abrir {
+  background: transparent;
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-destaque);
+  border-radius: var(--raio);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.abrir:hover {
+  background: var(--cor-destaque);
 }
 
 .vazio {
