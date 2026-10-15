@@ -3,17 +3,57 @@ import { ref } from 'vue'
 import MovieCard from './components/MovieCard.vue'
 
 const filmes = ref([
-  { id: 1, titulo: 'Interestelar', ano: 2014, genero: 'Ficção Científica', nota: 8.7, poster: '' },
-  { id: 2, titulo: 'Cidade de Deus', ano: 2002, genero: 'Drama', nota: 8.6, poster: '' },
-  { id: 3, titulo: 'O Auto da Compadecida', ano: 2000, genero: 'Comédia', nota: 8.5, poster: '' },
-  { id: 4, titulo: 'Parasita', ano: 2019, genero: 'Suspense', nota: 8.5, poster: '' },
-  { id: 5, titulo: 'Homem-Aranha no Aranhaverso', ano: 2018, genero: 'Animação', nota: 8.4, poster: '' }
+  {
+    id: 1,
+    titulo: 'Interestelar',
+    ano: 2014,
+    genero: 'Ficção Científica',
+    nota: 8.7,
+    poster: '',
+    sinopse: 'Astronautas atravessam um buraco de minhoca em busca de um novo lar para a humanidade.'
+  },
+  {
+    id: 2,
+    titulo: 'Cidade de Deus',
+    ano: 2002,
+    genero: 'Drama',
+    nota: 8.6,
+    poster: '',
+    sinopse: 'A vida de jovens numa comunidade do Rio de Janeiro, entre o crime e a busca por outro destino.'
+  },
+  {
+    id: 3,
+    titulo: 'O Auto da Compadecida',
+    ano: 2000,
+    genero: 'Comédia',
+    nota: 8.5,
+    poster: '',
+    sinopse: 'Dois amigos espertos do sertão nordestino se metem em confusões e tentam escapar com muita lábia.'
+  },
+  {
+    id: 4,
+    titulo: 'Parasita',
+    ano: 2019,
+    genero: 'Suspense',
+    nota: 8.5,
+    poster: '',
+    sinopse: 'Uma família pobre se infiltra aos poucos na casa de uma família rica, com consequências inesperadas.'
+  },
+  {
+    id: 5,
+    titulo: 'Homem-Aranha no Aranhaverso',
+    ano: 2018,
+    genero: 'Animação',
+    nota: 8.4,
+    poster: '',
+    sinopse: 'Miles Morales vira o Homem-Aranha e conhece versões do herói vindas de outros universos.'
+  }
 ])
 </script>
 
 <template>
   <main>
-    <h1>CineLista</h1>
+    <h1>CineVue</h1>
 
     <section class="lista">
       <MovieCard
@@ -24,6 +64,7 @@ const filmes = ref([
         :genero="filme.genero"
         :nota="filme.nota"
         :poster="filme.poster"
+        :sinopse="filme.sinopse"
       />
     </section>
   </main>
