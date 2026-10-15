@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import MovieCard from './components/MovieCard.vue'
+import GenreFilter from './components/GenreFilter.vue'
 
 const filmes = ref([
   {
@@ -49,15 +50,39 @@ const filmes = ref([
     sinopse: 'Miles Morales vira o Homem-Aranha e conhece versões do herói vindas de outros universos.'
   }
 ])
+
+const generos = ref(['Todos', 'Ficção Científica', 'Drama', 'Comédia', 'Suspense', 'Animação'])
+const generoAtivo = ref('Todos')
+
+function selecionarGenero(genero) {
+  generoAtivo.value = genero
+}
+
+function filmesFiltrados() {
+  if (generoAtivo.value === 'Todos') {
+    return filmes.value
+  }
+  return filmes.value.filter((filme) => filme.genero === generoAtivo.value)
+}
 </script>
 
 <template>
   <main>
     <h1>CineVue</h1>
 
+    <GenreFilter
+      :generos="generos"
+      :ativo="generoAtivo"
+      @selecionar="selecionarGenero"
+    />
+
+    <p v-if="filmesFiltrados().length === 0" class="vazio">
+      Nenhum filme encontrado.
+    </p>
+
     <section class="lista">
       <MovieCard
-        v-for="filme in filmes"
+        v-for="filme in filmesFiltrados()"
         :key="filme.id"
         :titulo="filme.titulo"
         :ano="filme.ano"
@@ -79,6 +104,11 @@ main {
 
 h1 {
   margin-bottom: 1.5rem;
+}
+
+.vazio {
+  color: var(--cor-texto-suave);
+  margin-bottom: 1rem;
 }
 
 .lista {
