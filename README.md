@@ -1,7 +1,7 @@
 # CineVue 🎬
 
 Aplicação One Page em Vue.js para explorar e organizar um catálogo de filmes.
-Projeto desenvolvido para a disciplina de [NOME DA DISCIPLINA].
+Projeto desenvolvido para a disciplina de [FRONT-END FRAMEWORK].
 
 ## Sobre o projeto
 
