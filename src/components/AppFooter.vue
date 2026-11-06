@@ -1,22 +1,13 @@
 <script setup>
-defineProps({
-  equipe: Array
-})
-</script>
+import { ref } from 'vue'
 
-<template>
-  <footer class="footer">
-    <p>Projeto desenvolvido por:</p>
-    <ul>
-      <li v-for="nome in equipe" :key="nome">{{ nome }}</li>
-    </ul>
-  </footer>
-</template>
+</script>
 
 <style scoped>
 .footer {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding: 1.5rem 1rem 2rem;
   border-top: 1px solid var(--cor-superficie);
   text-align: center;
   color: var(--cor-texto-suave);

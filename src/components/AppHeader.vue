@@ -1,23 +1,21 @@
-<script setup>
-defineProps({
-  titulo: String,
-  subtitulo: String,
-  total: Number
-})
-</script>
-
 <template>
   <header class="header">
-    <h1>🎬 {{ titulo }}</h1>
-    <p class="subtitulo">{{ subtitulo }}</p>
-    <p class="total">{{ total }} filmes no catálogo</p>
+    <h1>🎬 CineVue</h1>
+    <p class="subtitulo">Seu catálogo de filmes em uma única página</p>
+
+    <nav class="menu">
+      <RouterLink to="/">Início</RouterLink>
+      <RouterLink to="/sobre">Sobre</RouterLink>
+      <RouterLink to="/contato">Contato</RouterLink>
+    </nav>
   </header>
 </template>
 
 <style scoped>
 .header {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  padding: 2rem 1rem 1.5rem;
   border-bottom: 2px solid var(--cor-destaque);
 }
 
@@ -25,10 +23,24 @@ defineProps({
   color: var(--cor-texto-suave);
 }
 
-.total {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+.menu {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.menu a {
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--cor-destaque);
+}
+
+.menu a.router-link-exact-active {
   color: var(--cor-destaque);
   font-weight: bold;
+  border-bottom: 2px solid var(--cor-destaque);
 }
 </style>
